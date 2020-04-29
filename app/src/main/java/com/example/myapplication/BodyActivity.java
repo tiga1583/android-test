@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,16 @@ public class BodyActivity extends AppCompatActivity {
             R.drawable.nose_small
     };
 
+    Integer[] soundids = {
+            R.raw.arms,
+            R.raw.ears,
+            R.raw.eyes,
+            R.raw.eyes,
+            R.raw.eyes,
+            R.raw.eyes
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +44,13 @@ public class BodyActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridview_body_parts);
         gridView.setAdapter(new ImageAdapterGridView(this));
 
+         MediaPlayer mp = MediaPlayer.create(this, R.raw.arms);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
-                Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
+                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids[position]);
+                mp.start();
             }
         });
 
