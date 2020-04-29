@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(MainActivity.this, AnimalsActivity.class);
-                myIntent.putExtra(EXTRA_MESSAGE, "GOTCHA!");
+                myIntent.putExtra(EXTRA_MESSAGE, "JOAN GOTCHA!");
                 startActivity(myIntent);
             }
         });
