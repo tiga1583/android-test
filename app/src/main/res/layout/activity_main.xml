@@ -36,19 +36,25 @@
         android:paddingRight="16dp"
         android:orientation="vertical"
         android:gravity="center">
+        <Spinner
+            android:id="@+id/spinner_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
 
         <Button
             android:id="@+id/button_animals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animals - PraaNi"
+            android:text="Animals"
             android:gravity="center"/>
 
         <Button
             android:id="@+id/button_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Our Body - Aaplay Anga"
+            android:text="Our Body"
             android:gravity="center"/>
 
     </LinearLayout>

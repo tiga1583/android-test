@@ -11,10 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final Spinner languageDropdown = findViewById(R.id.spinner_language);
+        String[] items = new String[] {"Hindi","Marathi","Kannada"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        languageDropdown.setAdapter(adapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(MainActivity.this, AnimalsActivity.class);
-                myIntent.putExtra(EXTRA_MESSAGE, "JOAN GOTCHA!");
+                myIntent.putExtra(EXTRA_MESSAGE, languageDropdown.getSelectedItem().toString());
                 startActivity(myIntent);
             }
         });
@@ -54,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent myIntent = new Intent(MainActivity.this, BodyActivity.class);
-                myIntent.putExtra(EXTRA_MESSAGE, "GOTCHA!");
+                myIntent.putExtra(EXTRA_MESSAGE, languageDropdown.getSelectedItem().toString());
                 startActivity(myIntent);
             }
         });

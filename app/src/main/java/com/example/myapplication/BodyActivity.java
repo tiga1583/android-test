@@ -26,15 +26,23 @@ public class BodyActivity extends AppCompatActivity {
             R.drawable.nose_small
     };
 
-    Integer[] soundids = {
+    Integer[] soundids_marathi = {
             R.raw.arms,
             R.raw.ears,
             R.raw.eyes,
-            R.raw.eyes,
-            R.raw.eyes,
-            R.raw.eyes
+            R.raw.hair_amogh,
+            R.raw.leg_amogh_1,
+            R.raw.nose_amogh
     };
 
+    Integer[] soundids_kannada = {
+            R.raw.arms_kannada,
+            R.raw.ears_kannada,
+            R.raw.eyes_kannada,
+            R.raw.hair_kannada,
+            R.raw.legs_kannada,
+            R.raw.nose_amogh
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +52,25 @@ public class BodyActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridview_body_parts);
         gridView.setAdapter(new ImageAdapterGridView(this));
 
-         MediaPlayer mp = MediaPlayer.create(this, R.raw.arms);
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.arms);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
-                //Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
-                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids[position]);
-                mp.start();
+                Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+                if (message.equals("Marathi")) {
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_marathi[position]);
+                    mp.start();
+                }
+                else if (message.equals("Kannada")) {
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_kannada[position]);
+                    mp.start();
+                }
             }
         });
-
-        // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
 //        TextView textView = findViewById(R.id.textView);
