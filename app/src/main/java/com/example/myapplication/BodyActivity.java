@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,33 @@ public class BodyActivity extends AppCompatActivity {
             R.raw.nose_amogh
     };
 
+    Integer[] strings_kannada = {
+           R.string.arm_kannada,
+           R.string.ears_kannada,
+           R.string.eyes_kannada,
+           R.string.hair_kannada,
+           R.string.leg_kannada,
+           R.string.nose_kannada
+    };
+
+    Integer[] strings_marathi = {
+            R.string.arm_marathi,
+            R.string.ears_marathi,
+            R.string.eyes_marathi,
+            R.string.hair_marathi,
+            R.string.leg_marathi,
+            R.string.nose_marathi
+    };
+
+
+    void showToast(int stringid) {
+        Toast t =Toast.makeText(getBaseContext(), stringid, Toast.LENGTH_LONG);
+        ViewGroup group = (ViewGroup) t.getView();
+        TextView messageTextView = (TextView) group.getChildAt(0);
+        messageTextView.setTextSize(25);
+        t.show();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,16 +84,17 @@ public class BodyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.arms);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
                                     View v, int position, long id) {
-                Toast.makeText(getBaseContext(), message, Toast.LENGTH_LONG).show();
+
                 if (message.equals("Marathi")) {
+                    showToast(strings_marathi[position]);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_marathi[position]);
                     mp.start();
                 }
                 else if (message.equals("Kannada")) {
+                    showToast(strings_kannada[position]);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_kannada[position]);
                     mp.start();
                 }
@@ -101,7 +130,7 @@ public class BodyActivity extends AppCompatActivity {
 
             if (convertView == null) {
                 mImageView = new ImageView(mContext);
-                mImageView.setLayoutParams(new GridView.LayoutParams(260, 260));
+                mImageView.setLayoutParams(new GridView.LayoutParams(400, 400));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 mImageView.setPadding(16, 16, 16, 16);
             } else {

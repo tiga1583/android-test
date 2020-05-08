@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Amogh learns Bhasha</string>
     <string name="action_settings">Settings</string>
+    <string name="ears_kannada">KEE-VEE</string>
+    <string name="eyes_kannada">KAN-NOO</string>
+    <string name="hair_kannada">KU-DA-LOO</string>
+    <string name="nose_kannada">MOO-GOO</string>
+    <string name="leg_kannada">KAA-LOO</string>
+    <string name="arm_kannada">KU-EE</string>
+    <string name="ears_marathi">KAAN</string>
+    <string name="eyes_marathi">DOW-LAY</string>
+    <string name="hair_marathi">KAYS</string>
+    <string name="nose_marathi">NAAK</string>
+    <string name="leg_marathi">PAAY</string>
+    <string name="arm_marathi">HAATH</string>
+
 </resources>
