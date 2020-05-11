@@ -11,16 +11,45 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AnimalsActivity extends AppCompatActivity {
     GridView gridView;
     Integer[] imageIds = {
-            R.drawable.lion,
-
-            R.drawable.puppy,
-            R.drawable.horseweb
+            R.drawable.cat_small,
+            R.drawable.rat_small,
+            R.drawable.elephant_smal,
+            R.drawable.tiger_small,
+            R.drawable.lion_small,
+            R.drawable.monkey_small
     };
+
+    Integer[] soundids_marathi = {
+            R.raw.cat_marathi,
+            R.raw.hamster_marathi,
+            R.raw.elephant_marathi,
+            R.raw.tiger_marathi,
+            R.raw.lion_marathi,
+            R.raw.monkey_marathi
+    };
+
+    Integer[] soundids_hindi= {
+            R.raw.cat_billi,
+            R.raw.hamster_hindi,
+            R.raw.elephant_hindi,
+            R.raw.tiger_hindi,
+            R.raw.lion_hindi,
+            R.raw.monkey_hindi
+    };
+
+    void showToast(int stringid) {
+        Toast t =Toast.makeText(getBaseContext(), stringid, Toast.LENGTH_LONG);
+        ViewGroup group = (ViewGroup) t.getView();
+        TextView messageTextView = (TextView) group.getChildAt(0);
+        messageTextView.setTextSize(25);
+        t.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +60,27 @@ public class AnimalsActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridview_animals);
         gridView.setAdapter(new AnimalImageAdapterGridView(this));
 
-    }
+        Intent intent = getIntent();
+        final String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent,
+                                    View v, int position, long id) {
+
+                if (message.equals("Marathi")) {
+                    //showToast(strings_marathi[position]);
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_marathi[position]);
+                    mp.start();
+                }
+                else if (message.equals("Hindi")) {
+                    //showToast(strings_kannada[position]);
+                    MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_hindi[position]);
+                    mp.start();
+                }
+            }
+        });
+
+    }
 
     public class AnimalImageAdapterGridView extends BaseAdapter {
         private Context mContext;
@@ -58,7 +106,7 @@ public class AnimalsActivity extends AppCompatActivity {
 
             if (convertView == null) {
                 mImageView = new ImageView(mContext);
-                mImageView.setLayoutParams(new GridView.LayoutParams(260, 260));
+                mImageView.setLayoutParams(new GridView.LayoutParams(400, 400));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 mImageView.setPadding(16, 16, 16, 16);
             } else {
