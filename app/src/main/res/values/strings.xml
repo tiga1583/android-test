@@ -14,4 +14,19 @@
     <string name="leg_marathi">PAAY</string>
     <string name="arm_marathi">HAATH</string>
 
+
+    <string name="elephant_marathi">HATTI</string>
+    <string name="mouse_marathi">OON-DIR</string>
+    <string name="cat_marathi">MAAN-ZAR</string>
+    <string name="tiger_marathi">VAAGH</string>
+    <string name="lion_marathi">SIMHA</string>
+    <string name="monkey_marathi">MAAKAD</string>
+
+    <string name="elephant_hindi">HAA-THi</string>
+    <string name="mouse_hindi">CHOOHA</string>
+    <string name="cat_hindi">BILLI</string>
+    <string name="tiger_hindi">SHER</string>
+    <string name="lion_hindi">SHER</string>
+    <string name="monkey_hindi">BANDAR</string>
+
 </resources>

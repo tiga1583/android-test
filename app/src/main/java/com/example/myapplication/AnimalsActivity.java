@@ -43,6 +43,24 @@ public class AnimalsActivity extends AppCompatActivity {
             R.raw.monkey_hindi
     };
 
+    Integer[] strings_marathi = {
+            R.string.cat_marathi,
+            R.string.mouse_marathi,
+            R.string.elephant_marathi,
+            R.string.tiger_marathi,
+            R.string.lion_marathi,
+            R.string.monkey_marathi
+    };
+
+    Integer[] strings_hindi = {
+            R.string.cat_hindi,
+            R.string.mouse_hindi,
+            R.string.elephant_hindi,
+            R.string.tiger_hindi,
+            R.string.lion_hindi,
+            R.string.monkey_hindi
+    };
+
     void showToast(int stringid) {
         Toast t =Toast.makeText(getBaseContext(), stringid, Toast.LENGTH_LONG);
         ViewGroup group = (ViewGroup) t.getView();
@@ -56,7 +74,6 @@ public class AnimalsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animals);
 
-
         gridView = (GridView) findViewById(R.id.gridview_animals);
         gridView.setAdapter(new AnimalImageAdapterGridView(this));
 
@@ -68,12 +85,12 @@ public class AnimalsActivity extends AppCompatActivity {
                                     View v, int position, long id) {
 
                 if (message.equals("Marathi")) {
-                    //showToast(strings_marathi[position]);
+                    showToast(strings_marathi[position]);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_marathi[position]);
                     mp.start();
                 }
                 else if (message.equals("Hindi")) {
-                    //showToast(strings_kannada[position]);
+                    showToast(strings_hindi[position]);
                     MediaPlayer mp = MediaPlayer.create(getApplicationContext(), soundids_hindi[position]);
                     mp.start();
                 }
