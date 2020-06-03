@@ -64,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        Button button_family = findViewById(R.id.button_family);
+        button_family.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                myIntent.putExtra(EXTRA_MESSAGE, languageDropdown.getSelectedItem().toString());
+                startActivity(myIntent);
+            }
+        });
+
+        Button button_objects = findViewById(R.id.button_objects);
+        button_objects.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(MainActivity.this, ObjectsActivity.class);
+                myIntent.putExtra(EXTRA_MESSAGE, languageDropdown.getSelectedItem().toString());
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override

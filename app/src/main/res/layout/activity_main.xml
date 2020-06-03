@@ -57,6 +57,20 @@
             android:text="Our Body"
             android:gravity="center"/>
 
+        <Button
+            android:id="@+id/button_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Our Family"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/button_objects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Objects"
+            android:gravity="center"/>
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
